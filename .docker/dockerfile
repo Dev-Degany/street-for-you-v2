@@ -1,0 +1,46 @@
+FROM php:7.4-apache
+
+LABEL maintainer = 'rzjosia@gmail.com'
+
+# Config timezone
+ARG TZ
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Install package
+RUN apt update -y 
+RUN apt -qy install \
+    nodejs \
+    curl \
+    gnupg
+
+# Install yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt -y update && apt -y install yarn
+
+# Install composer 
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '795f976fe0ebd8b75f26a6dd68f78fd3453ce79f32ecb33e7fd087d39bfeb978342fb73ac986cd4f54edd0dc902601dc') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
+
+# Install symfony
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+
+RUN mkdir -p /project
+
+WORKDIR /project
+
+# Config user
+ARG USER_ID
+ARG GROUP_ID
+RUN usermod -u $USER_ID www-data
+RUN chown www-data:www-data /var/www
+
+RUN /etc/init.d/apache2 restart
+RUN a2enmod
+
+EXPOSE 80
+EXPOSE 443
+
+CMD 'apache2-foreground'
