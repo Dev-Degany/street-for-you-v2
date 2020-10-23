@@ -1,0 +1,65 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    transition: background-color ease-in-out 1s;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.title {
+    color: #e46a6a;
+}
+
+.toast-error {
+    background-color: #e46a6a;
+    color: #fff;
+}
+
+.bg-offline {
+    background-color: bisque;
+}
+
+#mapid {
+    z-index: -99999;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#search {
+    background-color: white;
+    object-fit: contain;
+    opacity: 0.95;
+    display: flex;
+    justify-content: space-between;
+}
+
+#mic-button {
+    margin-top: 10px;
+}
+
+.cancel-button {
+    background-color: #e46a6a;
+    color: #fff;
+    margin-left: 2px;
+}
+
+.add-button {
+    background-color: rgb(118, 191, 194);
+    color: #fff;
+    margin-left: 10 !important;
+}
