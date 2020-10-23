@@ -6,6 +6,7 @@ services:
             dockerfile: ./.docker/dockerfile
         ports:
             - 3500:80
+            - 9005:9005
         volumes:
             - ./app:/project
             - ./conf:/etc/apache2/sites-available

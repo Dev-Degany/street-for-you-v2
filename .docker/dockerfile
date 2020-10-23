@@ -42,5 +42,9 @@ RUN a2enmod
 
 EXPOSE 80
 EXPOSE 443
+EXPOSE 9005
+
+RUN apt install npm -y
+RUN npm install firebase -g firebase-tools
 
 CMD 'apache2-foreground'

@@ -38,6 +38,10 @@ recreate: stop start
 exec:
 	@${EXEC} -u www-data:www-data web /bin/bash
 
+.PHONY: exec-root
+exec-root:
+	@${EXEC} web /bin/bash
+
 .PHONY: mysql
 mysql:
 	@${EXEC} db /bin/mysql -u root -p enigma --password=root

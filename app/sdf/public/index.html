@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Street for you</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div>
+        <div class="container row">
+            <div>
+                <div class="input-field col s9 xl3 m4" id="search">
+                    <input id="city" type="text" placeholder="Ville"/>
+                    <button class="btn waves-effect waves-light" id="mic-button">
+                        <i id="mic-icon" class="material-icons">mic</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div id="mapid"></div>
+        </div>
+    </div>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script defer src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script defer src="js/firebase.js"></script>
+    <script defer src="js/app.js"></script>
+</body>
+
+</html>
